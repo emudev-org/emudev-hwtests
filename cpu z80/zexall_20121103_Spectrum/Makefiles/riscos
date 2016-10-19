@@ -1,0 +1,15 @@
+| Makefile for Z80 Excerciser for Spectrum
+|
+If "<ZMac$Dir>" = "" Then Error 0 !ZMac not seen
+Set Here$Dir <Obey$Dir>.^
+Echo Assembling
+IfThere <Here$Dir>.zexall Then Access <Here$Dir>.zexall wr/wr
+IfThere <Here$Dir>.zexdoc Then Access <Here$Dir>.zexdoc wr/wr
+Run <ZMac$Dir>.ZMac -o <Here$Dir>.zexall <Here$Dir>.zexall/src
+Run <ZMac$Dir>.ZMac -o <Here$Dir>.zexdoc <Here$Dir>.zexdoc/src
+Access <Here$Dir>.zexall r/r
+Access <Here$Dir>.zexdoc r/r
+SetLoad <Here$Dir>.zexall 38000
+SetExec <Here$Dir>.zexall 38000
+SetLoad <Here$Dir>.zexdoc 38000
+SetExec <Here$Dir>.zexdoc 38000
